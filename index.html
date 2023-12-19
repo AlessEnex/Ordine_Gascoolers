@@ -70,40 +70,33 @@
 
     <script>
 
-        document.getElementById('gascoolerForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const formData = new FormData(this);
-            let body = '';
+document.getElementById('gascoolerForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const formData = new FormData(this);
+    let body = '';
 
-            // Aggiungi questo blocco di codice per gestire i campi di testo
-            this.querySelectorAll('input[type="text"]').forEach(input => {
-                body += `${input.name} (Text): ${input.value}\n`;
-            });
+    // Aggiungi questo blocco di codice per gestire i campi di testo
+    this.querySelectorAll('input[type="text"]').forEach(input => {
+        if (input.value.trim() !== '') {  // Verifica se il valore non è vuoto o spazi vuoti
+            body += `${input.name} (Text): ${input.value}\n`;
+        }
+    });
 
-            formData.forEach((value, key) => {
-                if (key !== 'otherTreatment') {
-                    let label = key.charAt(0).toUpperCase() + key.slice(1);  // Capitalize the first letter
-                    body += `${label}: ${value}\n`;
-                }
-            });
+    formData.forEach((value, key) => {
+        if (key !== 'otherTreatment' && value !== null) {
+            let label = key.charAt(0).toUpperCase() + key.slice(1);  // Capitalize the first letter
+            body += `${label}: ${value}\n`;
+        }
+    });
 
-            // Aggiungi il campo "Other Treatment" solo se è stato selezionato
-            if (formData.get('treatment') === 'Other') {
-                body += `Other Treatment: ${formData.get('otherTreatment')}\n`;
-            }
+    // Aggiungi il campo "Other Treatment" solo se è stato selezionato
+    if (formData.get('treatment') === 'Other' && formData.get('otherTreatment').trim() !== '') {
+        body += `Other Treatment: ${formData.get('otherTreatment')}\n`;
+    }
 
-            window.location.href = 'mailto:acquisti@enex.it?subject=Gascooler Selection&body=' + encodeURIComponent(body);
-        });
+    window.location.href = 'mailto:acquisti@enex.it?subject=Gascooler Selection&body=' + encodeURIComponent(body);
+});
 
-        document.querySelectorAll('.treatment').forEach(radio => {
-            radio.addEventListener('change', function() {
-                if (this.value === 'Other') {
-                    document.getElementById('otherTreatment').classList.remove('hidden');
-                } else {
-                    document.getElementById('otherTreatment').classList.add('hidden');
-                }
-            });
-        });
     </script>
 
     
