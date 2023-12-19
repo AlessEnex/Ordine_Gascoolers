@@ -80,6 +80,26 @@ document.getElementById('gascoolerForm').addEventListener('submit', function(eve
     window.location.href = 'mailto:acquisti@enex.it?subject=Gascooler Selection&body=' + encodeURIComponent(body);
 });
 
+        // Gestisce la parte other
+        document.querySelectorAll('.treatment').forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'Other') {
+                    document.getElementById('otherTreatment').classList.remove('hidden');
+                } else {
+                    document.getElementById('otherTreatment').classList.add('hidden');
+                }
+                document.getElementById('gascoolerForm').querySelectorAll('input[type=radio]').forEach(el => {
+                    if (el.checked && el.value !== 'Standard') {
+                        el.parentElement.classList.add('highlight');
+                    } else {
+                        el.parentElement.classList.remove('highlight');
+                    }
+                });
+            });
+        });
+
+        
     </script>
 </body>
 </html>
+
