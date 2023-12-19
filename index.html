@@ -114,6 +114,12 @@
     const deliveryDate = formData.get('deliveredIn');
     formProps['Delivery Date'] = deliveryDate ? new Date(deliveryDate).toLocaleDateString() : '';
 
+    // PARTE RELATIVA AD "OTHER"
+    document.getElementById('otherTreatment').addEventListener('change', function() {
+    document.getElementById('otherTreatmentText').classList.toggle('hidden');
+    });
+
+
     // Aggiungi il nome della commessa all'oggetto della mail
     const orderName = formData.get('nomeCommessa');
     const subject = `Gascooler Order: ${orderName}`;
