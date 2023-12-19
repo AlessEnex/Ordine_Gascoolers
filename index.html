@@ -88,7 +88,11 @@
 function submitForm() {
     var formElements = document.querySelectorAll('input[type=text], input[type=radio]:checked');
     var formData = Array.from(formElements).reduce(function (acc, input) {
-        acc[input.name] = input.type === 'radio' ? input.value : input.value.trim(); // Assicurati che l'input sia fornito
+        if (input.type === 'radio') {
+            acc[input.name] = input.value;
+        } else if (input.type === 'text') {
+            acc[input.name] = input.value.trim();
+        }
         return acc;
     }, {});
 
@@ -109,6 +113,7 @@ function submitForm() {
         window.location.href = 'mailto:acquisti@enex.it?subject=Gascooler Selection Form Submission&body=' + emailBody;
     }
 }
+
 
 
     </script>
