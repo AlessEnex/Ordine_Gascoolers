@@ -105,7 +105,9 @@
     </div>
 
     <script>
-    document.getElementById('gascoolerForm').addEventListener('submit', function(event) {
+
+
+        document.getElementById('gascoolerForm').addEventListener('submit', function(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const formProps = Object.fromEntries(formData);
@@ -117,7 +119,7 @@
     const subject = `Gascooler Order: ${orderName}`;
 
     // Construct email body
-    let emailBody = `To: acquisti@enex.it\nSubject: ${subject}\n\n`;
+    let emailBody = '';
     for (const [key, value] of Object.entries(formProps)) {
         emailBody += `${key}: ${value}\n`;
     }
@@ -125,6 +127,9 @@
     // Open default email client
     window.location.href = `mailto:acquisti@enex.it?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
 });
+
+
+        
         
     </script>
 </body>
