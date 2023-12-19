@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gascooler Selection Form 4 </title>
+    <title>Gascooler Selection Form 2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
@@ -20,6 +20,7 @@
         }
     </style>
 </head>
+    
 <body>
     <div class="min-h-screen flex items-center justify-center">
         <div class="bg-white p-8 rounded shadow-lg text-gray-700 max-w-2xl w-full">
@@ -62,50 +63,50 @@
                     <label><input type="radio" name="connections" value="Inox" class="mr-2">Inox</label>
                     <label><input type="radio" name="connections" value="K65" class="mr-2">K65</label>
                 </div>
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">Submit</button>
+               <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">Submit</button>
             </form>
         </div>
     </div>
 
     <script>
 
-    document.getElementById('gascoolerForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const formData = new FormData(this);
-        let body = '';
+        document.getElementById('gascoolerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            let body = '';
 
-        // Aggiungi questo blocco di codice per gestire i campi di testo
-        this.querySelectorAll('input[type="text"]').forEach(input => {
-            body += input.name + ': ' + input.value + '\n';
-        });
+            // Aggiungi questo blocco di codice per gestire i campi di testo
+            this.querySelectorAll('input[type="text"]').forEach(input => {
+                body += `${input.name} (Text): ${input.value}\n`;
+            });
 
-        formData.forEach((value, key) => {
-            body += key + ': ' + value + '\n';
-        });
+            formData.forEach((value, key) => {
+                if (key !== 'otherTreatment') {
+                    let label = key.charAt(0).toUpperCase() + key.slice(1);  // Capitalize the first letter
+                    body += `${label}: ${value}\n`;
+                }
+            });
 
-        window.location.href = 'mailto:acquisti@enex.it?subject=Gascooler Selection&body=' + encodeURIComponent(body);
-    });
-
-    document.querySelectorAll('.treatment').forEach(radio => {
-        radio.addEventListener('change', function() {
-            if (this.value === 'Other') {
-                document.getElementById('otherTreatment').classList.remove('hidden');
-            } else {
-                document.getElementById('otherTreatment').classList.add('hidden');
+            // Aggiungi il campo "Other Treatment" solo se è stato selezionato
+            if (formData.get('treatment') === 'Other') {
+                body += `Other Treatment: ${formData.get('otherTreatment')}\n`;
             }
-            
-            //document.getElementById('gascoolerForm').querySelectorAll('input[type=radio]').forEach(el => {
-                //if (el.checked && el.value !== 'Standard') {
-                   // el.parentElement.classList.add('highlight');
-                //} else {
-                    //el.parentElement.classList.remove('highlight');
-                //}
-            //});
-        });
-    });
 
- 
+            window.location.href = 'mailto:acquisti@enex.it?subject=Gascooler Selection&body=' + encodeURIComponent(body);
+        });
+
+        document.querySelectorAll('.treatment').forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'Other') {
+                    document.getElementById('otherTreatment').classList.remove('hidden');
+                } else {
+                    document.getElementById('otherTreatment').classList.add('hidden');
+                }
+            });
+        });
     </script>
+
+    
 </body>
 </html>
 
