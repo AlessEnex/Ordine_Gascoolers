@@ -86,18 +86,30 @@
         });
 
         function submitForm() {
-            var formElements = document.querySelectorAll('input[type=text], input[type=radio]:checked');
-            var formData = Array.from(formElements).reduce(function(acc, input) {
-                acc[input.name] = input.value;
-                return acc;
-            }, {});
+    var formElements = document.querySelectorAll('input[type=text], input[type=radio]:checked');
+    var formData = Array.from(formElements).reduce(function(acc, input) {
+        acc[input.name] = input.type === 'radio' ? input.value : input.value.trim(); // Assicurati che l'input sia fornito
+        return acc;
+    }, {});
 
-            var emailBody = Object.keys(formData).map(function(key) {
-                return encodeURIComponent(key) + '=' + encodeURIComponent(formData[key]);
-            }).join('&');
+    // Aggiungi il campo "OtherTreatment" solo se è visibile e compilato
+    if (!document.getElementById('otherTreatment').classList.contains('hidden')) {
+        formData.otherTreatment = document.getElementById('otherTreatment').value.trim();
+    }
 
-            window.location.href = 'mailto:acquisti@enex.it?subject=Gascooler Selection Form Submission&body=' + emailBody;
-        }
+    // Verifica se l'oggetto formData è vuoto prima di generare l'URL `mailto`
+    if (Object.keys(formData).length === 0) {
+        alert('Compila almeno un campo prima di inviare il modulo.');
+    } else {
+        var emailBody = Object.keys(formData).map(function(key) {
+            return encodeURIComponent(key) + '=' + encodeURIComponent(formData[key]);
+        }).join('&');
+
+        // Utilizza una finestra modale o una chiamata a un server per inviare l'email
+        alert('Invia l\'email con i dati:\n\n' + emailBody);
+    }
+}
+
     </script>
 </body>
 </html>
