@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gascooler Selection Form 2</title>
+    <title>Gascooler Selection Form 3</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
@@ -114,10 +114,13 @@
     const deliveryDate = formData.get('deliveredIn');
     formProps['Delivery Date'] = deliveryDate ? new Date(deliveryDate).toLocaleDateString() : '';
 
-    // PARTE RELATIVA AD "OTHER"
-    document.getElementById('otherTreatment').addEventListener('change', function() {
-    document.getElementById('otherTreatmentText').classList.toggle('hidden');
-    });
+        // Codice JavaScript per gestire la visibilità del campo di testo dedicato
+        document.getElementById('otherTreatment').addEventListener('change', function() {
+            var otherTreatmentText = document.getElementById('otherTreatmentText');
+            otherTreatmentText.classList.toggle('hidden', !this.checked);
+            if (!this.checked) {
+                otherTreatmentText.value = ''; // Pulisci il valore quando l'utente deseleziona "Other..."
+            }
 
 
     // Aggiungi il nome della commessa all'oggetto della mail
