@@ -85,9 +85,9 @@
             document.getElementById('otherTreatment').classList.toggle('hidden', !this.checked);
         });
 
-        function submitForm() {
+function submitForm() {
     var formElements = document.querySelectorAll('input[type=text], input[type=radio]:checked');
-    var formData = Array.from(formElements).reduce(function(acc, input) {
+    var formData = Array.from(formElements).reduce(function (acc, input) {
         acc[input.name] = input.type === 'radio' ? input.value : input.value.trim(); // Assicurati che l'input sia fornito
         return acc;
     }, {});
@@ -101,14 +101,15 @@
     if (Object.keys(formData).length === 0) {
         alert('Compila almeno un campo prima di inviare il modulo.');
     } else {
-        var emailBody = Object.keys(formData).map(function(key) {
+        var emailBody = Object.keys(formData).map(function (key) {
             return encodeURIComponent(key) + '=' + encodeURIComponent(formData[key]);
-        }).join('&');
+        }).join('%0D%0A'); // Nuova riga tra le informazioni
 
-        // Utilizza una finestra modale o una chiamata a un server per inviare l'email
-        alert('Invia l\'email con i dati:\n\n' + emailBody);
+        // Apri il client di posta elettronica con il corpo dell'email formattato
+        window.location.href = 'mailto:acquisti@enex.it?subject=Gascooler Selection Form Submission&body=' + emailBody;
     }
 }
+
 
     </script>
 </body>
