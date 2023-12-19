@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pressure Setting Selection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Additional styles if needed */
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="max-w-md mx-auto my-10 p-6 bg-white shadow-md rounded">
+        <fieldset>
+            <legend class="text-lg font-semibold mb-4">PS max</legend>
+            <div class="space-y-2">
+                <label class="flex items-center">
+                    <input type="radio" name="ps_max" value="120" class="text-blue-600 focus:ring-blue-500">
+                    <span class="ml-2">120 bar</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="radio" name="ps_max" value="130" class="text-blue-600 focus:ring-blue-500">
+                    <span class="ml-2">130 bar</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="radio" name="ps_max" value="140" class="text-blue-600 focus:ring-blue-500">
+                    <span class="ml-2">140 bar</span>
+                </label>
+            </div>
+        </fieldset>
+    </div>
+    <script>
+        // Any additional JavaScript can be included here
+    </script>
+</body>
+</html>
