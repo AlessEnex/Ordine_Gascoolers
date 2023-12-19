@@ -77,17 +77,40 @@ document.getElementById('gascoolerForm').addEventListener('submit', function(eve
 
     // Aggiungi questo blocco di codice per gestire i campi di testo
     this.querySelectorAll('input[type="text"]').forEach(input => {
-        if (input.value.trim() !== '') {  // Verifica se il valore non è vuoto o spazi vuoti
-            body += `${input.name} (Text): ${input.value}\n`;
+        if (input.value.trim() !== '') {
+            let description = '';
+            switch (input.name) {
+                case 'nomeCommessa':
+                    description = 'Nome commessa';
+                    break;
+                case 'numeroCommessa':
+                    description = 'Numero Commessa';
+                    break;
+                // Aggiungi altri casi per gli altri campi di testo
+                default:
+                    description = input.name; // fallback al nome del campo
+            }
+
+            body += `${description}: ${input.value}\n`;
         }
     });
 
     formData.forEach((value, key) => {
-        if (key !== 'otherTreatment' && value !== null) {
-            let label = key.charAt(0).toUpperCase() + key.slice(1);  // Capitalize the first letter
-            body += `${label}: ${value}\n`;
+        if (value.trim() !== '') {
+            let description = '';
+            switch (key) {
+                case 'deliveryDate':
+                    description = 'Delivered for the day';
+                    break;
+                // Aggiungi altri casi per gli altri campi
+                default:
+                    description = key; // fallback al nome del campo
+            }
+
+            body += `${description}: ${value}\n`;
         }
     });
+
 
     // Aggiungi il campo "Other Treatment" solo se è stato selezionato
     if (formData.get('treatment') === 'Other' && formData.get('otherTreatment').trim() !== '') {
