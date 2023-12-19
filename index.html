@@ -26,15 +26,15 @@
             <h1 class="text-2xl font-bold mb-6 text-center">Gascooler Selection</h1>
             <form id="gascoolerForm">
                 <div class="grid grid-cols-2 gap-4 mb-4">
-                    <input type="text" placeholder="Nome commessa" class="border p-2 rounded" />
-                    <input type="text" placeholder="Numero Commessa" class="border p-2 rounded" />
-                    <input type="text" placeholder="Year" class="border p-2 rounded" />
-                    <input type="text" placeholder="Delivered in ...." class="border p-2 rounded" />
-                    <input type="text" placeholder="Code" class="border p-2 rounded" />
-                    <input type="text" placeholder="Quantity" class="border p-2 rounded" />
+                    <input type="text"  name="nomeCommessa" placeholder="Nome commessa" class="border p-2 rounded" />
+                    <input type="text" name="nomeCommessa"  placeholder="Numero Commessa" class="border p-2 rounded" />
+                    <input type="text"  name="nomeCommessa" placeholder="Year" class="border p-2 rounded" />
+                    <input type="text"  name="nomeCommessa" placeholder="Delivered in ...." class="border p-2 rounded" />
+                    <input type="text"  name="nomeCommessa" placeholder="Code" class="border p-2 rounded" />
+                    <input type="text"  name="nomeCommessa" placeholder="Quantity" class="border p-2 rounded" />
                 </div>
                 <div class="mb-4">
-                    <label for="deliveryDate" class="block mb-2">Delivered for the day:</label>
+                    <label for="deliveryDate"  name="nomeCommessa"  class="block mb-2">Delivered for the day:</label>
                     <input type="date" id="deliveryDate" class="border p-2 rounded w-full" />
                 </div>
                 <div class="mb-4">
@@ -68,7 +68,9 @@
     </div>
 
     <script>
-document.getElementById('gascoolerForm').addEventListener('submit', function(event) {
+
+        // dovrebbe gestire la costruzione dellla mail
+    document.getElementById('gascoolerForm').addEventListener('submit', function(event) {
     event.preventDefault();
     const formData = new FormData(this);
 
@@ -78,24 +80,10 @@ document.getElementById('gascoolerForm').addEventListener('submit', function(eve
     });
 
     window.location.href = 'mailto:acquisti@enex.it?subject=Gascooler Selection&body=' + encodeURIComponent(body);
-});
+    });
 
 
-    // Aggiungi il nome della commessa all'oggetto della mail
-    const orderName = formData.get('nomeCommessa');
-    const subject = `Gascooler Order: ${orderName}`;
-
-    // Construct email body
-    let emailBody = '';
-    for (const [key, value] of Object.entries(formProps)) {
-        emailBody += `${key}: ${value}\n`;
-    }
-
-    // Open default email client
-    window.location.href = `mailto:acquisti@enex.it?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
-});
-
-        
+    
         // Gestisce la parte other
         document.querySelectorAll('.treatment').forEach(radio => {
             radio.addEventListener('change', function() {
