@@ -85,10 +85,12 @@
             document.getElementById('otherTreatment').classList.toggle('hidden', !this.checked);
         });
 
-function submitForm() {
+
+
+  function submitForm() {
     var formElements = document.querySelectorAll('input[type=text], input[type=radio]:checked');
     var textInputs = document.querySelectorAll('input[type=text]');
-    
+
     var formData = Array.from(formElements).reduce(function (acc, input) {
         if (input.type === 'radio') {
             acc[input.name] = input.value;
@@ -99,8 +101,8 @@ function submitForm() {
     }, {});
 
     // Aggiungi i valori delle caselle di testo all'oggetto formData
-    textInputs.forEach(function(textInput) {
-        acc[textInput.name] = textInput.value.trim();
+    textInputs.forEach(function (textInput) {
+        formData[textInput.name] = textInput.value.trim();
     });
 
     // Aggiungi il campo "OtherTreatment" solo se è visibile e compilato
@@ -108,7 +110,7 @@ function submitForm() {
         formData.otherTreatment = document.getElementById('otherTreatment').value.trim();
     }
 
-    // Verifica se l'oggetto formData è vuoto prima di generare l'URL `mailto`
+    // Verifica se l'oggetto formData è vuoto prima di aprire l'email
     if (Object.keys(formData).length === 0) {
         alert('Compila almeno un campo prima di inviare il modulo.');
     } else {
@@ -116,11 +118,11 @@ function submitForm() {
             return encodeURIComponent(key) + '=' + encodeURIComponent(formData[key]);
         }).join('%0D%0A'); // Nuova riga tra le informazioni
 
-        // Apri il client di posta elettronica con il corpo dell'email formattato
-        window.location.href = 'mailto:acquisti@enex.it?subject=Gascooler Selection Form Submission&body=' + emailBody;
+        // Apri la finestra modale con il client di posta elettronica
+        window.open('mailto:acquisti@enex.it?subject=Gascooler Selection Form Submission&body=' + emailBody, '_blank');
     }
 }
-
+      
 
 
 
