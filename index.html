@@ -80,6 +80,22 @@ document.getElementById('gascoolerForm').addEventListener('submit', function(eve
     window.location.href = 'mailto:acquisti@enex.it?subject=Gascooler Selection&body=' + encodeURIComponent(body);
 });
 
+
+    // Aggiungi il nome della commessa all'oggetto della mail
+    const orderName = formData.get('nomeCommessa');
+    const subject = `Gascooler Order: ${orderName}`;
+
+    // Construct email body
+    let emailBody = '';
+    for (const [key, value] of Object.entries(formProps)) {
+        emailBody += `${key}: ${value}\n`;
+    }
+
+    // Open default email client
+    window.location.href = `mailto:acquisti@enex.it?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+});
+
+        
         // Gestisce la parte other
         document.querySelectorAll('.treatment').forEach(radio => {
             radio.addEventListener('change', function() {
