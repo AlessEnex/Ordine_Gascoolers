@@ -117,7 +117,7 @@
             formProps['Delivery Date'] = deliveryDate ? new Date(deliveryDate).toLocaleDateString() : '';
 
             // Construct email body
-            let emailBody = `To: acquisti@enex.it\nSubject: Gascooler Selection\n\n`;
+            let emailBody = //`To: acquisti@enex.it\nSubject: Gascooler Selection\n\n`;
             for (const [key, value] of Object.entries(formProps)) {
                 emailBody += `${key}: ${value}\n`;
             }
