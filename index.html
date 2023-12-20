@@ -5,109 +5,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gascooler Selection Form</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Open Sans', sans-serif;
             background: linear-gradient(to right, #00DBDE, #FC00FF);
-            color: #333;
+            color: white;
         }
-        .highlight {
-            background-color: #add8e6;
+        .custom-radio input[type="radio"]:checked + label {
+            background-color: white;
+            color: black;
         }
-        .highlight-special {
-            background-color: #b0e0e6;
+        .custom-radio input[type="radio"] + label {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border: 1px solid white;
+            margin-right: 0.5rem;
+            border-radius: 9999px;
         }
-        .hidden {
+        .custom-radio input[type="radio"] {
             display: none;
+        }
+        .custom-text-input input[type="text"] {
+            background-color: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            width: 100%;
+        }
+        .custom-text-input input[type="text"]::placeholder {
+            color: white;
         }
     </style>
 </head>
-<body class="bg-gray-100">
-    <div class="min-h-screen flex items-center justify-center">
-        <div class="bg-white p-8 rounded shadow-lg text-gray-700 max-w-2xl w-full">
-            <h1 class="text-2xl font-bold mb-6 text-center">Gascooler Selection</h1>
-            <form id="gascoolerForm">
-                <div class="grid grid-cols-2 gap-4 mb-4">
-                    <input type="text" placeholder="Nome commessa" class="border p-2 rounded" />
-                    <input type="text" placeholder="Numero Commessa" class="border p-2 rounded" />
-                    <input type="text" placeholder="Year" class="border p-2 rounded" />
-                    <input type="text" placeholder="Delivered in ...." class="border p-2 rounded" />
-                    <input type="text" placeholder="Code" class="border p-2 rounded" />
-                    <input type="text" placeholder="Quantity" class="border p-2 rounded" />
+<body>
+    <div class="container mx-auto p-6">
+        <form id="gascoolerForm" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold mb-4">Gascooler Selection</h2>
+                    <div class="space-y-4">
+                        <div class="custom-text-input">
+                            <input type="text" name="orderName" placeholder="Nome commessa" required>
+                        </div>
+                        <div class="custom-text-input">
+                            <input type="text" name="orderNumber" placeholder="Numero Commessa" required>
+                        </div>
+                        <div class="custom-text-input">
+                            <input type="text" name="year" placeholder="Year" required>
+                        </div>
+                        <div class="custom-text-input">
+                            <input type="text" name="deliveredIn" placeholder="Delivered in ...." required>
+                        </div>
+                        <div class="custom-text-input">
+                            <input type="text" name="code" placeholder="Code" required>
+                        </div>
+                        <div class="custom-text-input">
+                            <input type="text" name="quantity" placeholder="Quantity" required>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-4">
+                <div>
                     <label for="deliveryDate" class="block mb-2">Delivered for the day:</label>
-                    <input type="date" id="deliveryDate" class="border p-2 rounded w-full" />
+                    <input type="date" id="deliveryDate" name="deliveryDate" class="w-full mb-6" required>
+                    <div class="space-y-4">
+                        <div class="custom-radio">
+                            <p>PS max</p>
+                            <input type="radio" id="ps120" name="psMax" value="120 bar" required>
+                            <label for="ps120">120 bar</label>
+                            <input type="radio" id="ps130" name="psMax" value="130 bar">
+                            <label for="ps130">130 bar</label>
+                            <input type="radio" id="ps140" name="psMax" value="140 bar">
+                            <label for="ps140">140 bar</label>
+                        </div>
+                        <div class="custom-radio">
+                            <p>Treatment</p>
+                            <input type="radio" id="standard" name="treatment" value="Standard" required>
+                            <label for="standard">Standard</label>
+                            <input type="radio" id="epoxy" name="treatment" value="Epoxy">
+                            <label for="epoxy">Epoxy</label>
+                            <input type="radio" id="almg" name="treatment" value="AlMg">
+                            <label for="almg">AlMg</label>
+                            <input type="radio" id="ktl" name="treatment" value="KTL">
+                            <label for="ktl">KTL</label>
+                            <input type="radio" id="otherTreatment" name="treatment" value="Other">
+                            <label for="otherTreatment">Other...</label>
+                            <div class="custom-text-input hidden" id="otherTreatmentInput">
+                                <input type="text" name="otherTreatmentText" placeholder="Specify other treatment">
+                            </div>
+                        </div>
+                        <div class="custom-radio">
+                            <p>Kit Spry</p>
+                            <input type="radio" id="kitYes" name="kitSpry" value="YES" required>
+                            <label for="kitYes">YES</label>
+                            <input type="radio" id="kitNo" name="kitSpry" value="NO">
+                            <label for="kitNo">NO</label>
+                        </div>
+                        <div class="custom-radio">
+                            <p>Connections</p>
+                            <input type="radio" id="inox" name="connections" value="Inox" required>
+                            <label for="inox">Inox</label>
+                            <input type="radio" id="k65" name="connections" value="K65">
+                            <label for="k65">K65</label>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-4">
-                    <span class="block mb-2">PS max</span>
-                    <label><input type="radio" name="psMax" value="120" class="mr-2">120 bar</label>
-                    <label><input type="radio" name="psMax" value="130" class="mr-2">130 bar</label>
-                    <label><input type="radio" name="psMax" value="140" class="mr-2">140 bar</label>
-                </div>
-                <div class="mb-4">
-                    <span class="block mb-2">Treatment</span>
-                    <label><input type="radio" name="treatment" value="Standard" class="mr-2 treatment">Standard</label>
-                    <label><input type="radio" name="treatment" value="Epoxy" class="mr-2 treatment">Epoxy</label>
-                    <label><input type="radio" name="treatment" value="AlMg" class="mr-2 treatment">AlMg</label>
-                    <label><input type="radio" name="treatment" value="KTL" class="mr-2 treatment">KTL</label>
-                    <label><input type="radio" name="treatment" value="Other" class="mr-2 treatment">Other...</label>
-                    <input type="text" placeholder="Please specify" class="border p-2 rounded w-full mt-2 hidden" id="otherTreatment" />
-                </div>
-                <div class="mb-4">
-                    <span class="block mb-2">Kit Spry</span>
-                    <label><input type="radio" name="kitSpry" value="YES" class="mr-2 kitSpry">YES</label>
-                    <label><input type="radio" name="kitSpry" value="NO" class="mr-2 kitSpry">NO</label>
-                </div>
-                <div class="mb-6">
-                    <span class="block mb-2">Connections</span>
-                    <label><input type="radio" name="connections" value="Inox" class="mr-2">Inox</label>
-                    <label><input type="radio" name="connections" value="K65" class="mr-2">K65</label>
-                </div>
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">Submit</button>
-            </form>
-        </div>
+            </div>
+            <button type="submit" class="bg-white text-black px-6 py-2 rounded-full font-semibold">Submit</button>
+        </form>
     </div>
 
     <script>
-        document.querySelectorAll('.treatment').forEach(radio => {
-            radio.addEventListener('change', function() {
-                if (this.value === 'Other') {
-                    document.getElementById('otherTreatment').classList.remove('hidden');
-                } else {
-                    document.getElementById('otherTreatment').classList.add('hidden');
-                }
-                document.getElementById('gascoolerForm').querySelectorAll('input[type=radio]').forEach(el => {
-                    if (el.checked && el.value !== 'Standard') {
-                        el.parentElement.classList.add('highlight');
-                    } else {
-                        el.parentElement.classList.remove('highlight');
-                    }
-                });
-            });
-        });
-
-        document.querySelectorAll('.kitSpry').forEach(radio => {
-            radio.addEventListener('change', function() {
-                document.getElementById('gascoolerForm').querySelectorAll('input[type=radio]').forEach(el => {
-                    if (el.checked && el.value === 'YES') {
-                        el.parentElement.classList.add('highlight-special');
-                    } else {
-                        el.parentElement.classList.remove('highlight-special');
-                    }
-                });
-            });
+        document.getElementById('otherTreatment').addEventListener('change', function() {
+            document.getElementById('otherTreatmentInput').classList.toggle('hidden', !this.checked);
         });
 
         document.getElementById('gascoolerForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            const formData = new FormData(this);
-            let body = 'Delivery Date: ' + formData.get('deliveryDate') + '\n';
-            formData.forEach((value, key) => {
-                body += key + ': ' + value + '\n';
-            });
-            window.location.href = 'mailto:acquisti@enex.it?subject=Gascooler Selection&body=' + encodeURIComponent(body);
+            const formData = new FormData(event.target);
+            const formProps = Object.fromEntries(formData);
+            const emailBody = Object.entries(formProps).map(([key, value]) => `${key.toUpperCase()}: ${value}`).join('\n');
+            const orderName = formProps.orderName || 'Unknown';
+            window.location.href = `mailto:acquisti@enex.it?subject=Gascooler Order - ${orderName}&body=${encodeURIComponent(emailBody)}`;
         });
     </script>
 </body>
