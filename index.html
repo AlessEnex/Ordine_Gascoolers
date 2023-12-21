@@ -6,6 +6,8 @@
     <title>Gascooler Selection Form</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.css">
+
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
@@ -37,15 +39,61 @@
         .custom-text-input input[type="text"]::placeholder {
             color: white;
         }
+
+.custom-text-input input[type="date"] {
+    background-color: transparent;
+    color: black;
+}
+
+.custom-text-input input[type="date"]::before {
+    content: attr(placeholder);
+    display: inline-block;
+    color: black;
+}
+      
         
         /* Aggiunto margine inferiore ai titoli delle sezioni */
         .custom-radio p {
             margin-bottom: 1rem;
-            margin-top: 2rem;
+          margin-top: 2rem;
         }
-        
+      
+      
+      
+      
+      .custom-text-input input[type="date"] {
+    background-color: transparent;
+    color: white;
+    padding: 0.5rem;
+    border: 1px solid white;
+    border-radius: 0.25rem;
+    width: calc(100% - 12px); /* Aggiunto margine per evitare sovrapposizioni */
+}
+
+.custom-text-input input[type="date"]::placeholder {
+    color: white;
+}
+
+.custom-text-input input[type="date"]:focus,
+.custom-text-input input[type="date"]:active {
+    background-color: transparent;
+    color: white;
+}
+
+.custom-text-input input[type="text"]:focus,
+.custom-text-input input[type="text"]:active {
+    background-color: black; /* Cambiato in black */
+    color: white; /* Aggiunto per cambiare il colore del testo */
+}
+
+#otherTreatmentInput {
+    margin-top: 20px; /* Puoi regolare il valore in base alle tue esigenze */
+}
+      
     </style>
 </head>
+  
+  
 <body>
     <div class="container mx-auto p-6">
         <form id="gascoolerForm" class="space-y-6">
@@ -75,7 +123,13 @@
                 </div>
                 <div>
                     <label for="deliveryDate" class="block mb-2">Delivered for the day:</label>
-                    <input type="date" id="deliveryDate" name="deliveryDate" class="w-full mb-6" required>
+                  
+                  <input type="text" id="deliveryDate" name="deliveryDate" class="w-full mb-6" required>
+
+          
+                  
+                  
+                  
                     <div class="space-y-4">
                         <div class="custom-radio">
                             <p>PS max</p>
@@ -97,8 +151,11 @@
                             <input type="radio" id="ktl" name="treatment" value="KTL">
                             <label for="ktl">KTL</label>
                             <input type="radio" id="otherTreatment" name="treatment" value="Other">
+                          
                             <label for="otherTreatment">Other...</label>
+                          
                             <div class="custom-text-input hidden" id="otherTreatmentInput">
+                              
                                 <input type="text" name="otherTreatmentText" placeholder="Specify other treatment">
                             </div>
                         </div>
@@ -137,5 +194,22 @@
             window.location.href = `mailto:acquisti@enex.it?subject=Gascooler Order - ${orderName}&body=${encodeURIComponent(emailBody)}`;
         });
     </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.js"></script>
+
+<script>
+    flatpickr('#deliveryDate', {
+        dateFormat: 'Y-m-d',
+    });
+  
+    document.getElementById('deliveryDate').addEventListener('input', function() {
+    this.style.color = 'black'; // Cambia il colore del testo a nero
+});
+  
+</script>  
+  
+
+
+  
 </body>
 </html>
