@@ -205,7 +205,59 @@
     document.getElementById('deliveryDate').addEventListener('input', function() {
     this.style.color = 'black'; // Cambia il colore del testo a nero
 });
-  
+
+    document.getElementById('otherTreatment').addEventListener('change', function() {
+        document.getElementById('otherTreatmentInput').classList.toggle('hidden', !this.checked);
+    });
+
+    document.getElementById('gascoolerForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Ottenere la data dal campo di input
+        const deliveryDateInput = document.getElementById('deliveryDate');
+        const rawDate = deliveryDateInput.value;
+
+        // Convertire la data nel formato desiderato
+        const formattedDate = formatItalianDate(rawDate);
+
+        // Ottenere gli altri dati dal modulo
+        const formData = new FormData(event.target);
+        const formProps = Object.fromEntries(formData);
+
+        // Aggiornare il valore della data nel formProps
+        formProps.deliveryDate = formattedDate;
+
+        // Creare il corpo dell'email
+        const emailBody = Object.entries(formProps).map(([key, value]) => `${key.toUpperCase()}: ${value}`).join('\n');
+
+        // Ottenere il nome dell'ordine per l'oggetto dell'email
+        const orderName = formProps.orderName || 'Unknown';
+
+        // Creare l'URL dell'email con soggetto e corpo
+        const emailUrl = `mailto:acquisti@enex.it?subject=Gascooler Order - ${orderName}&body=${encodeURIComponent(emailBody)}`;
+
+        // Aprire il client email preimpostato
+        window.location.href = emailUrl;
+    });
+
+    // Funzione per formattare la data nel formato "giorno mese anno"
+    function formatItalianDate(dateString) {
+        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+        const dateObject = new Date(dateString);
+        return dateObject.toLocaleDateString('it-IT', options);
+    }
+
+    flatpickr('#deliveryDate', {
+        dateFormat: 'Y-m-d',
+    });
+
+    document.getElementById('deliveryDate').addEventListener('input', function() {
+        this.style.color = 'black';
+    });
+
+
+
+    
 </script>  
   
 
