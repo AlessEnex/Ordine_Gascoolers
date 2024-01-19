@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gascooler Selection Form</title>
+    <title>Gascooler Selection Form 2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.css">
@@ -197,66 +197,24 @@
   
   <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.js"></script>
 
-<script>
+  <script>
     flatpickr('#deliveryDate', {
-        dateFormat: 'Y-m-d',
-    });
-  
+        dateFormat: 'j F Y',
+
     document.getElementById('deliveryDate').addEventListener('input', function() {
     this.style.color = 'black'; // Cambia il colore del testo a nero
-});
-
-    document.getElementById('otherTreatment').addEventListener('change', function() {
-        document.getElementById('otherTreatmentInput').classList.toggle('hidden', !this.checked);
-    });
-
-    document.getElementById('gascoolerForm').addEventListener('submit', function(event) {
-        event.preventDefault();
 
         // Ottenere la data dal campo di input
-        const deliveryDateInput = document.getElementById('deliveryDate');
-        const rawDate = deliveryDateInput.value;
+        //const deliveryDateInput = document.getElementById('deliveryDate');
+        //const rawDate = deliveryDateInput.value;
 
         // Convertire la data nel formato desiderato
-        const formattedDate = formatItalianDate(rawDate);
-
-        // Ottenere gli altri dati dal modulo
-        const formData = new FormData(event.target);
-        const formProps = Object.fromEntries(formData);
+        //const formattedDate = formatItalianDate(rawDate);
 
         // Aggiornare il valore della data nel formProps
-        formProps.deliveryDate = formattedDate;
-
-        // Creare il corpo dell'email
-        const emailBody = Object.entries(formProps).map(([key, value]) => `${key.toUpperCase()}: ${value}`).join('\n');
-
-        // Ottenere il nome dell'ordine per l'oggetto dell'email
-        const orderName = formProps.orderName || 'Unknown';
-
-        // Creare l'URL dell'email con soggetto e corpo
-        const emailUrl = `mailto:acquisti@enex.it?subject=Gascooler Order - ${orderName}&body=${encodeURIComponent(emailBody)}`;
-
-        // Aprire il client email preimpostato
-        window.location.href = emailUrl;
+        //formProps.deliveryDate = formattedDate;
+    
     });
-
-    // Funzione per formattare la data nel formato "giorno mese anno"
-    function formatItalianDate(dateString) {
-        const options = { day: 'numeric', month: 'long', year: 'numeric' };
-        const dateObject = new Date(dateString);
-        return dateObject.toLocaleDateString('it-IT', options);
-    }
-
-    flatpickr('#deliveryDate', {
-        dateFormat: 'Y-m-d',
-    });
-
-    document.getElementById('deliveryDate').addEventListener('input', function() {
-        this.style.color = 'black';
-    });
-
-
-
     
 </script>  
   
