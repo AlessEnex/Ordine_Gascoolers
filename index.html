@@ -191,7 +191,7 @@
             const formProps = Object.fromEntries(formData);
             const emailBody = Object.entries(formProps).map(([key, value]) => `${key.toUpperCase()}: ${value}`).join('\n');
             const orderName = formProps.orderName || 'Unknown';
-            window.location.href = `mailto:acquisti@enex.it?subject=Gascooler Order - ${orderName}&body=${encodeURIComponent(emailBody)}`;
+            window.location.href = `mailto:romane.jacques@enextechnologies.com?subject=Gascooler Order - ${orderName}&body=${encodeURIComponent(emailBody)}`;
         });
     </script>
   
