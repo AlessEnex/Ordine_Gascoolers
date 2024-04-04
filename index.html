@@ -40,16 +40,16 @@
             color: white;
         }
 
-.custom-text-input input[type="date"] {
-    background-color: transparent;
-    color: black;
-}
+        .custom-text-input input[type="date"] {
+            background-color: transparent;
+            color: black;
+        }
 
-.custom-text-input input[type="date"]::before {
-    content: attr(placeholder);
-    display: inline-block;
-    color: black;
-}
+        .custom-text-input input[type="date"]::before {
+            content: attr(placeholder);
+            display: inline-block;
+            color: black;
+        }
       
         
         /* Aggiunto margine inferiore ai titoli delle sezioni */
@@ -57,18 +57,15 @@
             margin-bottom: 1rem;
           margin-top: 2rem;
         }
-      
-      
-      
-      
-      .custom-text-input input[type="date"] {
-    background-color: transparent;
-    color: white;
-    padding: 0.5rem;
-    border: 1px solid white;
-    border-radius: 0.25rem;
-    width: calc(100% - 12px); /* Aggiunto margine per evitare sovrapposizioni */
-}
+        
+        .custom-text-input input[type="date"] {
+            background-color: transparent;
+            color: white;
+            padding: 0.5rem;
+            border: 1px solid white;
+            border-radius: 0.25rem;
+            width: calc(100% - 12px); /* Aggiunto margine per evitare sovrapposizioni */
+        }
 
 .custom-text-input input[type="date"]::placeholder {
     color: white;
@@ -171,7 +168,7 @@
                             <p> RAL </p>
                             <input type="radio" id="standardRal" name="ral" value="Standard" required>
                             <label for="standardRal">Standard</label>
-                            <input type="radio" id="otherRal" name="ral" value="Other">
+                            <input type="radio" id="otherRal" name="ral" value="OtherRal">
                             <label for="otherRal">Other...</label>
                             <div class="custom-text-input hidden" id="otherRal">  
                                 <input type="text" name="otherRalText" placeholder="Specify other Ral">
