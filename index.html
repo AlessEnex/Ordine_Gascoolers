@@ -90,6 +90,8 @@
 #otherRalInput {
     margin-top: 20px; /* Puoi regolare il valore in base alle tue esigenze */
 }
+      
+      
         
     </style>
 
@@ -164,13 +166,13 @@
                             </div>
                         </div>
                             
-                         <div class="custom-radio"> <!-- RAL -->
+                        <div class="custom-radio"> <!-- RAL -->
                             <p> RAL </p>
                             <input type="radio" id="standardRal" name="ral" value="Standard" required>
                             <label for="standardRal">Standard</label>
-                            <input type="radio" id="otherRalRal" name="ral" value="OtherRal">
-                            <label for="otherRalRadio">Other...</label>
-                            <div class="custom-text-input hidden" id="otherRal">  
+                            <input type="radio" id="otherRal" name="ral" value="OtherRal">
+                            <label for="otherRal">Other...</label>
+                            <div class="custom-text-input hidden" id="otherRalInput">  
                                 <input type="text" name="otherRalText" placeholder="Specify other Ral">
                             </div>                            
                         </div>
@@ -203,14 +205,8 @@
             document.getElementById('otherTreatmentInput').classList.toggle('hidden', !this.checked);
         });
 
-        document.querySelectorAll('input[name="ral"]').forEach(function(ralInput) {
-            ralInput.addEventListener('change', function() {
-                if (this.value === "OtherRal") {
-                    document.getElementById('otherRalInput').classList.remove('hidden');
-                } else {
-                    document.getElementById('otherRalInput').classList.add('hidden');
-                }
-            });
+        document.getElementById('otherRal').addEventListener('change', function() {
+            document.getElementById('otherRalInput').classList.toggle('hidden', !this.checked);
         });
         
         document.getElementById('gascoolerForm').addEventListener('submit', function(event) {
