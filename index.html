@@ -125,9 +125,10 @@
                     </div>
                 </div>
                 <div>
+                
                     <label for="deliveryDate" class="block mb-2">Delivered for the day:</label>
                   
-                  <input type="text" id="deliveryDate" name="deliveryDate" class="w-full mb-6" required>
+                    <input type="text" id="deliveryDate" name="deliveryDate" class="w-full mb-6" required>
 
           
                   
@@ -166,6 +167,7 @@
                                 <input type="text" name="otherRalText" placeholder="Specify other Ral">
                             </div>                            
                         </div>
+                        
                         <div class="custom-radio">
                             <p>Kit Spry</p>
                             <input type="radio" id="kitYes" name="kitSpry" value="YES" required>
@@ -173,6 +175,7 @@
                             <input type="radio" id="kitNo" name="kitSpry" value="NO">
                             <label for="kitNo">NO</label>
                         </div>
+                        
                         <div class="custom-radio">
                             <p>Connections</p>
                             <input type="radio" id="inox" name="connections" value="Inox" required>
@@ -180,6 +183,7 @@
                             <input type="radio" id="k65" name="connections" value="K65">
                             <label for="k65">K65</label>
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -192,6 +196,10 @@
             document.getElementById('otherTreatmentInput').classList.toggle('hidden', !this.checked);
         });
 
+        document.getElementById('otherRal').addEventListener('change', function() {
+            document.getElementById('otherRalInput').classList.toggle('hidden', !this.checked);
+        });
+        
         document.getElementById('gascoolerForm').addEventListener('submit', function(event) {
             event.preventDefault();
             const formData = new FormData(event.target);
