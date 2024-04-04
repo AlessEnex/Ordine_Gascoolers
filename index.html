@@ -203,8 +203,14 @@
             document.getElementById('otherTreatmentInput').classList.toggle('hidden', !this.checked);
         });
 
-        document.getElementById('otherRalRadio').addEventListener('change', function() {
-            document.getElementById('otherRalInput').classList.toggle('hidden', !this.checked);
+        document.querySelectorAll('input[name="ral"]').forEach(function(ralInput) {
+            ralInput.addEventListener('change', function() {
+                if (this.value === "OtherRal") {
+                    document.getElementById('otherRalInput').classList.remove('hidden');
+                } else {
+                    document.getElementById('otherRalInput').classList.add('hidden');
+                }
+            });
         });
         
         document.getElementById('gascoolerForm').addEventListener('submit', function(event) {
