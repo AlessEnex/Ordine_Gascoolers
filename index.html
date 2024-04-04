@@ -67,29 +67,29 @@
             width: calc(100% - 12px); /* Aggiunto margine per evitare sovrapposizioni */
         }
 
-.custom-text-input input[type="date"]::placeholder {
-    color: white;
-}
-
-.custom-text-input input[type="date"]:focus,
-.custom-text-input input[type="date"]:active {
-    background-color: transparent;
-    color: white;
-}
-
-.custom-text-input input[type="text"]:focus,
-.custom-text-input input[type="text"]:active {
-    background-color: black; /* Cambiato in black */
-    color: white; /* Aggiunto per cambiare il colore del testo */
-}
-
-#otherTreatmentInput {
-    margin-top: 20px; /* Puoi regolare il valore in base alle tue esigenze */
-}
-
-#otherRalInput {
-    margin-top: 20px; /* Puoi regolare il valore in base alle tue esigenze */
-}
+        .custom-text-input input[type="date"]::placeholder {
+            color: white;
+        }
+        
+        .custom-text-input input[type="date"]:focus,
+        .custom-text-input input[type="date"]:active {
+            background-color: transparent;
+            color: white;
+        }
+        
+        .custom-text-input input[type="text"]:focus,
+        .custom-text-input input[type="text"]:active {
+            background-color: black; /* Cambiato in black */
+            color: white; /* Aggiunto per cambiare il colore del testo */
+        }
+        
+        #otherTreatmentInput {
+            margin-top: 20px; /* Puoi regolare il valore in base alle tue esigenze */
+        }
+        
+        #otherRalInput {
+            margin-top: 20px; /* Puoi regolare il valore in base alle tue esigenze */
+        }
       
       
         
@@ -107,6 +107,21 @@
                 <div>
                     <h2 class="text-2xl font-semibold mb-4">Gascooler Order</h2>
                     <div class="space-y-4">
+
+                        <div class="custom-radio">
+                            <p>Supplier</p>
+                            <input type="radio" id="suppl_ROEN" name="supplier" value="ROEN" required>
+                            <label for="suppl_ROEN">ROEN</label>
+                            <input type="radio" id="suppl_GUNTNER" name="supplier" value="GUNTNER" required>
+                            <label for="suppl_GUNTNER">GUNTNER</label>
+                            <input type="radio" id="suppl_KOBOL" name="supplier" value="KOBOL" required>
+                            <label for="suppl_KOBOL">KOBOL</label>
+                            <input type="radio" id="suppl_LUVE" name="supplier" value="LUVE" required>
+                            <label for="suppl_LUVE">LUVE</label>
+                            <input type="radio" id="suppl_other" name="supplier" value="other" required>
+                            <label for="suppl_other">other</label>
+                        </div>
+                        
                         <div class="custom-text-input">
                             <input type="text" name="orderName" placeholder="Numero e Nome commessa" required>
                         </div>
