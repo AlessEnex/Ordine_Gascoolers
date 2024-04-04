@@ -91,6 +91,9 @@
 }
       
     </style>
+
+
+
 </head>
   
   
@@ -99,14 +102,14 @@
         <form id="gascoolerForm" class="space-y-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <h2 class="text-2xl font-semibold mb-4">Gascooler Selection</h2>
+                    <h2 class="text-2xl font-semibold mb-4">Gascooler Order</h2>
                     <div class="space-y-4">
                         <div class="custom-text-input">
-                            <input type="text" name="orderName" placeholder="Nome commessa" required>
+                            <input type="text" name="orderName" placeholder="Numero e Nome commessa" required>
                         </div>
-                        <div class="custom-text-input">
+                        <!-- <div class="custom-text-input">
                             <input type="text" name="orderNumber" placeholder="Numero Commessa" required>
-                        </div>
+                        </div> -->
                         <div class="custom-text-input">
                             <input type="text" name="year" placeholder="Year" required>
                         </div>
@@ -131,6 +134,7 @@
                   
                   
                     <div class="space-y-4">
+                        
                         <div class="custom-radio">
                             <p>PS max</p>
                             <input type="radio" id="ps120" name="psMax" value="120 bar" required>
@@ -140,6 +144,7 @@
                             <input type="radio" id="ps140" name="psMax" value="140 bar">
                             <label for="ps140">140 bar</label>
                         </div>
+                        
                         <div class="custom-radio">
                             <p>Treatment</p>
                             <input type="radio" id="standard" name="treatment" value="Standard" required>
@@ -151,13 +156,15 @@
                             <input type="radio" id="ktl" name="treatment" value="KTL">
                             <label for="ktl">KTL</label>
                             <input type="radio" id="otherTreatment" name="treatment" value="Other">
-                          
                             <label for="otherTreatment">Other...</label>
-                          
-                            <div class="custom-text-input hidden" id="otherTreatmentInput">
-                              
+                            <div class="custom-text-input hidden" id="otherTreatmentInput">  
                                 <input type="text" name="otherTreatmentText" placeholder="Specify other treatment">
                             </div>
+                            <input type="radio" id="otherRal" name="Ral" value="Other">
+                            <label for="otherRal">Other...</label>
+                            <div class="custom-text-input hidden" id="otherRal">  
+                                <input type="text" name="otherRalText" placeholder="Specify other Ral">
+                            </div>                            
                         </div>
                         <div class="custom-radio">
                             <p>Kit Spry</p>
