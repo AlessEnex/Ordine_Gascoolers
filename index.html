@@ -185,7 +185,7 @@
                             <p>Additional Options</p>
                             <div>
                                 <input type="checkbox" id="option1" name="additionalOptions" value="Silentblock (Anti-Vibrations Pads)" checked>
-                                <label for="option1">Silentblock (Anti-Vibrations Pads)</label>
+                                <label for="option1">Silentblock (Anti-Vibrations Pads.)</label>
                             </div>
                             <div>
                                 <input type="checkbox" id="option2" name="additionalOptions" value="Each fan with service switch" checked>
@@ -232,6 +232,7 @@
     event.preventDefault();
     const formData = new FormData(event.target);
     const formProps = Object.fromEntries(formData);
+    const year = formProps.year || '2024'; // Recupera il valore dell'anno o precompila con '2024'
 
     // Costruiamo il corpo dell'email
     let emailBody = "Good morning, new order with the following specs. Attached datasheet for reference.\n\n";
