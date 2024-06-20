@@ -251,8 +251,13 @@
 
             // Concatena le opzioni selezionate con virgola e spazio
             if (selectedOptions.length > 0) {
-                emailBody += `${key.toUpperCase()}: ${selectedOptions.join(', ')}\n`;
+                emailBody += `${key.toUpperCase()}:\n`; // Titolo delle opzioni aggiuntive seguito da un ritorno a capo
+                selectedOptions.forEach(option => {
+                    emailBody += `- ${option}\n`; // Ogni opzione inizia con un trattino e spazio per una nuova riga
+                });
             }
+
+            
         } else {
             // Altrimenti, aggiungiamo la coppia chiave:valore al corpo dell'email
             emailBody += `${key.toUpperCase()}: ${value}\n`;
