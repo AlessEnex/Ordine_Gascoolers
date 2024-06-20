@@ -113,7 +113,7 @@
                             <input type="text" name="orderName" placeholder="Numero e Nome commessa" required>
                         </div>
                         <div class="custom-text-input">
-                            <input type="text" name="year" placeholder="Year" required>
+                            <input type="text" name="year" placeholder="Year" value="2024" required>
                         </div>
                         <div class="custom-text-input">
                             <input type="text" name="deliveredIn" placeholder="Delivered in ...." required>
@@ -234,7 +234,8 @@
     const formProps = Object.fromEntries(formData);
 
     // Costruiamo il corpo dell'email
-    let emailBody = '';
+    let emailBody = "Good morning, new order with the following specs. Attached datasheet for reference.\n\n";
+
 
     // Loop attraverso le proprietà del form
     for (const [key, value] of Object.entries(formProps)) {
