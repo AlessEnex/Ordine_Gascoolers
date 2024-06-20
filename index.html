@@ -184,7 +184,7 @@
                             
                             <p>Additional Options</p>
                             <div>
-                                <input type="checkbox" id="option1" name="additionalOptions" value="Silentblock (Anti-Vibrations Pads.)" checked>
+                                <input type="checkbox" id="option1" name="additionalOptions" value="Silentblock (Anti-Vibrations Pads..)" checked>
                                 <label for="option1">Silentblock (Anti-Vibrations Pads)</label>
                             </div>
                             <div>
@@ -220,20 +220,49 @@
             document.getElementById('otherRalInput').classList.toggle('hidden', !this.checked);
         });
 
-        document.getElementById('gascoolerForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const formProps = Object.fromEntries(formData);
 
-            let emailBody = Object.entries(formProps).map(([key, value]) => `${key.toUpperCase()}: ${value}`).join('\n');
-            
-            const options = document.querySelectorAll('input[name="additionalOptions"]:checked');
-            const selectedOptions = Array.from(options).map(option => option.value);
-            emailBody += `\nADDITIONAL OPTIONS: ${selectedOptions.join(', ')}`;
+                                    document.getElementById('gascoolerForm').addEventListener('submit', function(event) {
+                                        event.preventDefault();
+                                        const formData = new FormData(event.target);
+                                        const formProps = Object.fromEntries(formData);
+                                    
+                                        // Costruiamo il corpo dell'email
+                                        let emailBody = '';
+                                    
+                                        // Loop attraverso le proprietà del form
+                                        for (const [key, value] of Object.entries(formProps)) {
+                                            // Ignoriamo le proprietà che sono campi vuoti o radio button non selezionati
+                                            if (value === '' || (key.startsWith('suppl_') && !document.getElementById(key).checked)) {
+                                                continue;
+                                            }
+                                    
+                                            // Gestiamo le opzioni aggiuntive in modo separato
+                                            if (key === 'additionalOptions') {
+                                                const selectedOptions = Array.isArray(value) ? value : [value];
+                                                const optionsText = selectedOptions.filter(opt => opt !== '').join(', ');
+                                                if (optionsText !== '') {
+                                                    emailBody += `${key.toUpperCase()}: ${optionsText}\n`;
+                                                }
+                                            } else {
+                                                // Altrimenti, aggiungiamo la coppia chiave:valore al corpo dell'email
+                                                emailBody += `${key.toUpperCase()}: ${value}\n`;
+                                            }
+                                        }
+                                    
+                                        // Costruiamo il soggetto dell'email
+                                        const orderName = formProps.orderName || 'Unknown';
+                                        const subject = `Gascooler Order - ${orderName}`;
+                                    
+                                        // Costruiamo il link per l'invio dell'email
+                                        const mailtoLink = `mailto:romane.jacques@enextechnologies.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+                                    
+                                        // Reindirizziamo alla mailto link
+                                        window.location.href = mailtoLink;
+                                    });
 
-            const orderName = formProps.orderName || 'Unknown';
-            window.location.href = `mailto:romane.jacques@enextechnologies.com?subject=Gascooler Order - ${orderName}&body=${encodeURIComponent(emailBody)}`;
-        });
+
+
+        
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.js"></script>
