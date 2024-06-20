@@ -261,11 +261,11 @@
 
     // Costruiamo il soggetto dell'email
     const orderName = formProps.orderName || 'Unknown';
-    const subject = `Gascooler Order - ${orderName}`;
+    const subject = `Gascooler Order ${year} - ${orderName}`;
 
     // Costruiamo il link per l'invio dell'email
     const mailtoLink = `mailto:romane.jacques@enextechnologies.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
-
+        
     // Reindirizziamo alla mailto link
     window.location.href = mailtoLink;
 });
