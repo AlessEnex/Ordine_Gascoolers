@@ -6,7 +6,7 @@
     <title>Gascooler Selection Form 2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.css">
 
     <style>
         body {
@@ -50,12 +50,10 @@
             display: inline-block;
             color: black;
         }
-      
-        
-        /* Aggiunto margine inferiore ai titoli delle sezioni */
+
         .custom-radio p {
             margin-bottom: 1rem;
-          margin-top: 2rem;
+            margin-top: 2rem;
         }
         
         .custom-text-input input[type="date"] {
@@ -64,42 +62,31 @@
             padding: 0.5rem;
             border: 1px solid white;
             border-radius: 0.25rem;
-            width: calc(100% - 12px); /* Aggiunto margine per evitare sovrapposizioni */
+            width: calc(100% - 12px);
         }
 
         .custom-text-input input[type="date"]::placeholder {
             color: white;
         }
-        
+
         .custom-text-input input[type="date"]:focus,
         .custom-text-input input[type="date"]:active {
             background-color: transparent;
             color: white;
         }
-        
+
         .custom-text-input input[type="text"]:focus,
         .custom-text-input input[type="text"]:active {
-            background-color: black; /* Cambiato in black */
-            color: white; /* Aggiunto per cambiare il colore del testo */
+            background-color: black;
+            color: white;
         }
-        
-        #otherTreatmentInput {
-            margin-top: 20px; /* Puoi regolare il valore in base alle tue esigenze */
-        }
-        
+
+        #otherTreatmentInput,
         #otherRalInput {
-            margin-top: 20px; /* Puoi regolare il valore in base alle tue esigenze */
+            margin-top: 20px;
         }
-      
-      
-        
     </style>
-
-
-
 </head>
-  
-  
 <body>
     <div class="container mx-auto p-6">
         <form id="gascoolerForm" class="space-y-6">
@@ -125,9 +112,6 @@
                         <div class="custom-text-input">
                             <input type="text" name="orderName" placeholder="Numero e Nome commessa" required>
                         </div>
-                        <!-- <div class="custom-text-input">
-                            <input type="text" name="orderNumber" placeholder="Numero Commessa" required>
-                        </div> -->
                         <div class="custom-text-input">
                             <input type="text" name="year" placeholder="Year" required>
                         </div>
@@ -143,17 +127,9 @@
                     </div>
                 </div>
                 <div>
-                
                     <label for="deliveryDate" class="block mb-2">Delivered for the day:</label>
-                  
                     <input type="text" id="deliveryDate" name="deliveryDate" class="w-full mb-6" required>
-
-          
-                  
-                  
-                  
                     <div class="space-y-4">
-                        
                         <div class="custom-radio">
                             <p>PS max</p>
                             <input type="radio" id="ps120" name="psMax" value="120 bar" required>
@@ -163,7 +139,6 @@
                             <input type="radio" id="ps140" name="psMax" value="140 bar">
                             <label for="ps140">140 bar</label>
                         </div>
-                        
                         <div class="custom-radio">
                             <p>Treatment</p>
                             <input type="radio" id="standard" name="treatment" value="Standard" required>
@@ -180,18 +155,16 @@
                                 <input type="text" name="otherTreatmentText" placeholder="Specify other treatment">
                             </div>
                         </div>
-                            
-                        <div class="custom-radio"> <!-- RAL -->
-                            <p> RAL </p>
+                        <div class="custom-radio">
+                            <p>RAL</p>
                             <input type="radio" id="standardRal" name="ral" value="Standard" required>
                             <label for="standardRal">Standard</label>
                             <input type="radio" id="otherRal" name="ral" value="OtherRal">
                             <label for="otherRal">Other...</label>
                             <div class="custom-text-input hidden" id="otherRalInput">  
                                 <input type="text" name="otherRalText" placeholder="Specify other Ral">
-                            </div>                            
+                            </div>
                         </div>
-                        
                         <div class="custom-radio">
                             <p>Kit Spry</p>
                             <input type="radio" id="kitYes" name="kitSpry" value="YES" required>
@@ -199,7 +172,6 @@
                             <input type="radio" id="kitNo" name="kitSpry" value="NO">
                             <label for="kitNo">NO</label>
                         </div>
-                        
                         <div class="custom-radio">
                             <p>Connections</p>
                             <input type="radio" id="inox" name="connections" value="Inox" required>
@@ -207,7 +179,29 @@
                             <input type="radio" id="k65" name="connections" value="K65">
                             <label for="k65">K65</label>
                         </div>
-                        
+                        <div class="custom-checkbox">
+                            <p>Additional Options</p>
+                            <div>
+                                <input type="checkbox" id="option1" name="additionalOptions" value="Option 1">
+                                <label for="option1">Option 1</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="option2" name="additionalOptions" value="Option 2">
+                                <label for="option2">Option 2</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="option3" name="additionalOptions" value="Option 3">
+                                <label for="option3">Option 3</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="option4" name="additionalOptions" value="Option 4">
+                                <label for="option4">Option 4</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="option5" name="additionalOptions" value="Option 5">
+                                <label for="option5">Option 5</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -223,33 +217,32 @@
         document.getElementById('otherRal').addEventListener('change', function() {
             document.getElementById('otherRalInput').classList.toggle('hidden', !this.checked);
         });
-        
+
         document.getElementById('gascoolerForm').addEventListener('submit', function(event) {
             event.preventDefault();
             const formData = new FormData(event.target);
             const formProps = Object.fromEntries(formData);
-            const emailBody = Object.entries(formProps).map(([key, value]) => `${key.toUpperCase()}: ${value}`).join('\n');
+
+            let emailBody = Object.entries(formProps).map(([key, value]) => `${key.toUpperCase()}: ${value}`).join('\n');
+            
+            const options = document.querySelectorAll('input[name="additionalOptions"]:checked');
+            const selectedOptions = Array.from(options).map(option => option.value);
+            emailBody += `\nADDITIONAL OPTIONS: ${selectedOptions.join(', ')}`;
+
             const orderName = formProps.orderName || 'Unknown';
             window.location.href = `mailto:romane.jacques@enextechnologies.com?subject=Gascooler Order - ${orderName}&body=${encodeURIComponent(emailBody)}`;
         });
     </script>
-  
- <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.js"></script>
 
-<script>
-    flatpickr('#deliveryDate', {
-        dateFormat: 'd F Y',
-    });
-  
-    document.getElementById('deliveryDate').addEventListener('input', function() {
-    this.style.color = 'black'; // Cambia il colore del testo a nero
-});
-  
-    
-</script>  
-  
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.js"></script>
+    <script>
+        flatpickr('#deliveryDate', {
+            dateFormat: 'd F Y',
+        });
 
-
-  
+        document.getElementById('deliveryDate').addEventListener('input', function() {
+            this.style.color = 'black';
+        });
+    </script>
 </body>
 </html>
